@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+.app {
+    width: 100vw;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hide-overflow {
+    overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fill-transition {
+    transition: margin 1.2s ease-out, width 1.2s ease-out, height 1.2s ease-out;
+}
+.fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.fill2 {
+    margin: -35% -30% -20% -40%;
+    width: 166%;
+    height: 160%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg-1, .bg-2, .right-eye, .left-eye, .puck, .vert-bound, .horz-bound {
+    background-image: url("./img/bg-1.png");
+    background-size: cover;
+    background-position: right;
+}
+.bg-2 {
+    background-image: url("./img/bg-2.png");
+}
+.right-eye {
+    background-image: url("./img/right-eye.png");
+}
+.left-eye {
+    background-image: url("./img/left-eye.png");
+}
+.puck {
+    background-image: url("./img/puck.png");
+}
+.vert-bound, .horz-bound {
+    opacity: 30%;
+}
+.vert-bound {
+    background-image: url("./img/vert-bound.png");
+}
+.horz-bound {
+    background-image: url("./img/horz-bound.png");
 }
 
-.App-link {
-  color: #61dafb;
+.slow-transition {
+    transition: height 1.2s ease-in, width 1.2s ease-in, top 1.2s ease-in, left 1.2s ease-in;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+    font-family: pressStart2P;
+    src: url("./assets/Press_Start_2P/PressStart2P-Regular.ttf");
+}
+.text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+
+    font-weight: bolder;
+    font-size: 5rem;
+    font-family: pressStart2P ,monospace;
+
+    color: white;
+    -webkit-text-stroke: 2px black;
+    opacity: 95%;
+}
+/*the game board isn't entirely centered*/
+.textGame {
+    margin-left: 1.65%;
+    margin-top: -1%;
+}
+.textScore {
+    top: 16%;
+    font-size: 3rem;
+}
+.textScore > span {
+    padding: 0 2%;
 }
