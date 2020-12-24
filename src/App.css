@@ -41,7 +41,7 @@
     background-image: url("./img/puck.png");
 }
 .vert-bound, .horz-bound {
-    opacity: 30%;
+    opacity: 0.30;
 }
 .vert-bound {
     background-image: url("./img/vert-bound.png");
@@ -72,7 +72,7 @@
 
     color: white;
     -webkit-text-stroke: 2px black;
-    opacity: 95%;
+    opacity: 0.95;
 }
 /*the game board isn't entirely centered*/
 .textGame {
