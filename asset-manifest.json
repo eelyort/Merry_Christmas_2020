@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/kaguya_pong/static/css/main.c1ef4651.chunk.css",
+    "main.js": "/kaguya_pong/static/js/main.059b1ea3.chunk.js",
+    "main.js.map": "/kaguya_pong/static/js/main.059b1ea3.chunk.js.map",
+    "runtime-main.js": "/kaguya_pong/static/js/runtime-main.b0cedff0.js",
+    "runtime-main.js.map": "/kaguya_pong/static/js/runtime-main.b0cedff0.js.map",
+    "static/js/2.592c6766.chunk.js": "/kaguya_pong/static/js/2.592c6766.chunk.js",
+    "static/js/2.592c6766.chunk.js.map": "/kaguya_pong/static/js/2.592c6766.chunk.js.map",
+    "static/js/3.55a254ae.chunk.js": "/kaguya_pong/static/js/3.55a254ae.chunk.js",
+    "static/js/3.55a254ae.chunk.js.map": "/kaguya_pong/static/js/3.55a254ae.chunk.js.map",
+    "index.html": "/kaguya_pong/index.html",
+    "static/css/main.c1ef4651.chunk.css.map": "/kaguya_pong/static/css/main.c1ef4651.chunk.css.map",
+    "static/js/2.592c6766.chunk.js.LICENSE.txt": "/kaguya_pong/static/js/2.592c6766.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/kaguya_pong/static/media/vert-bound.40065d8a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0cedff0.js",
+    "static/js/2.592c6766.chunk.js",
+    "static/css/main.c1ef4651.chunk.css",
+    "static/js/main.059b1ea3.chunk.js"
+  ]
+}
