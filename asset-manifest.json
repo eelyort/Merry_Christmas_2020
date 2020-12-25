@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Merry_Christmas_2020/static/css/main.bf501f72.chunk.css",
-    "main.js": "/Merry_Christmas_2020/static/js/main.c69930a3.chunk.js",
-    "main.js.map": "/Merry_Christmas_2020/static/js/main.c69930a3.chunk.js.map",
+    "main.js": "/Merry_Christmas_2020/static/js/main.12d4fc04.chunk.js",
+    "main.js.map": "/Merry_Christmas_2020/static/js/main.12d4fc04.chunk.js.map",
     "runtime-main.js": "/Merry_Christmas_2020/static/js/runtime-main.228256a8.js",
     "runtime-main.js.map": "/Merry_Christmas_2020/static/js/runtime-main.228256a8.js.map",
     "static/js/2.c0bcf9bb.chunk.js": "/Merry_Christmas_2020/static/js/2.c0bcf9bb.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.228256a8.js",
     "static/js/2.c0bcf9bb.chunk.js",
     "static/css/main.bf501f72.chunk.css",
-    "static/js/main.c69930a3.chunk.js"
+    "static/js/main.12d4fc04.chunk.js"
   ]
 }
