@@ -26,7 +26,7 @@ const leftEyeStartOffset = 0.85/gameToPercent;
 //  game bounds
 const topBound = -35/gameToPercent;
 const botBound = 40/gameToPercent;
-//  left: 23% on puck puts puck center on edge of paddle, TODO: when in use subtract puckRadius
+//  left: 23% on puck puts puck center on edge of paddle
 const distToPaddlePlane = 23/gameToPercent;
 //  same as above but death (scoring) plane
 const distToDeathPlane = 23.9/gameToPercent;
@@ -109,8 +109,6 @@ class App extends React.Component {
     keyPressHandler(e) {
         const {state, difficultySelected} = this.state;
 
-        // console.log(`keyPress: ${e.key}`);
-
         // press any key to continue...
         if(state === welcome) {
             this.pressAnyToContinue();
@@ -136,10 +134,8 @@ class App extends React.Component {
             this.playAgain();
         }
     }
-    clickHandler(e) {
+    clickHandler() {
         const {state} = this.state;
-
-        console.log(`click: ${e}`);
 
         // press any key to continue...
         if(state === welcome){
@@ -287,7 +283,6 @@ class App extends React.Component {
             // start playing
             if(this.tickInterval === null){
                 this.resetGameVars();
-                console.log(`game starting, ai speed: ${aiPaddleSpeed}`);
                 this.tickInterval = setInterval(() => this.tick(), 1000/ticksPS);
             }
 
@@ -381,8 +376,6 @@ class App extends React.Component {
             );
         }
 
-        // TODO: onwards
-
         console.log(`UNKNOWN STATE IN APP: ${state}`);
         return null;
     }
@@ -428,7 +421,6 @@ class App extends React.Component {
         let newY = this.yPuck + this.yVelecityPuck;
         //  worst edge case: ball moving diagonally into corner
         if((newY <= topBound || newY >= botBound) && Math.abs(newX) >= distToPaddlePlane-puckRadius){
-            // console.log("corner case");
             const percentXToGo = Math.abs((Math.abs(this.xPuck - distToPaddlePlane)+puckRadius)/this.xVelecityPuck);
             const percentYToGo = ((newY <= topBound) ? (
                 Math.abs((Math.abs(this.yPuck-topBound)+puckRadius)/this.yVelecityPuck)
