@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Merry_Christmas_2020/static/css/main.52c33b82.chunk.css",
-    "main.js": "/Merry_Christmas_2020/static/js/main.88508f23.chunk.js",
-    "main.js.map": "/Merry_Christmas_2020/static/js/main.88508f23.chunk.js.map",
+    "main.css": "/Merry_Christmas_2020/static/css/main.bf501f72.chunk.css",
+    "main.js": "/Merry_Christmas_2020/static/js/main.c69930a3.chunk.js",
+    "main.js.map": "/Merry_Christmas_2020/static/js/main.c69930a3.chunk.js.map",
     "runtime-main.js": "/Merry_Christmas_2020/static/js/runtime-main.228256a8.js",
     "runtime-main.js.map": "/Merry_Christmas_2020/static/js/runtime-main.228256a8.js.map",
     "static/js/2.c0bcf9bb.chunk.js": "/Merry_Christmas_2020/static/js/2.c0bcf9bb.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.b6150c9c.chunk.js": "/Merry_Christmas_2020/static/js/3.b6150c9c.chunk.js",
     "static/js/3.b6150c9c.chunk.js.map": "/Merry_Christmas_2020/static/js/3.b6150c9c.chunk.js.map",
     "index.html": "/Merry_Christmas_2020/index.html",
-    "static/css/main.52c33b82.chunk.css.map": "/Merry_Christmas_2020/static/css/main.52c33b82.chunk.css.map",
+    "static/css/main.bf501f72.chunk.css.map": "/Merry_Christmas_2020/static/css/main.bf501f72.chunk.css.map",
     "static/js/2.c0bcf9bb.chunk.js.LICENSE.txt": "/Merry_Christmas_2020/static/js/2.c0bcf9bb.chunk.js.LICENSE.txt",
     "static/media/App.css": "/Merry_Christmas_2020/static/media/vert-bound.40065d8a.png",
     "static/media/troy.ebeae00b.jpg": "/Merry_Christmas_2020/static/media/troy.ebeae00b.jpg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.228256a8.js",
     "static/js/2.c0bcf9bb.chunk.js",
-    "static/css/main.52c33b82.chunk.css",
-    "static/js/main.88508f23.chunk.js"
+    "static/css/main.bf501f72.chunk.css",
+    "static/js/main.c69930a3.chunk.js"
   ]
 }
