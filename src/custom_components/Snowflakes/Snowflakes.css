@@ -1,0 +1,107 @@
+.Snowflakes-js-snowflake {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px #000;
+}
+
+/*animations*/
+@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}
+@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}
+
+/*Shake Animation 0*/
+@keyframes snowflakes-shake0{0%,100%{transform:translateX(0)}50%{transform:translateX(83.82476221650806px)}}
+@-webkit-keyframes snowflakes-shake0{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(83.82476221650806px);transform:translateX(83.82476221650806px)}}
+
+/*Shake Animation 1*/
+@keyframes snowflakes-shake1{0%,100%{transform:translateX(0)}50%{transform:translateX(98.83398698855002px)}}
+@-webkit-keyframes snowflakes-shake1{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(98.83398698855002px);transform:translateX(98.83398698855002px)}}
+
+/*Shake Animation 2*/
+@keyframes snowflakes-shake2{0%,100%{transform:translateX(0)}50%{transform:translateX(114.61107130053736px)}}
+@-webkit-keyframes snowflakes-shake2{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(114.61107130053736px);transform:translateX(114.61107130053736px)}}
+
+/*Shake Animation 3*/
+@keyframes snowflakes-shake3{0%,100%{transform:translateX(0)}50%{transform:translateX(80.18276520309831px)}}
+@-webkit-keyframes snowflakes-shake3{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(80.18276520309831px);transform:translateX(80.18276520309831px)}}
+
+/*Shake Animation 4*/
+@keyframes snowflakes-shake4{0%,100%{transform:translateX(0)}50%{transform:translateX(87.64709912886977px)}}
+@-webkit-keyframes snowflakes-shake4{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(87.64709912886977px);transform:translateX(87.64709912886977px)}}
+
+/*Shake Animation 5*/
+@keyframes snowflakes-shake5{0%,100%{transform:translateX(0)}50%{transform:translateX(117.17663698279347px)}}
+@-webkit-keyframes snowflakes-shake5{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(117.17663698279347px);transform:translateX(117.17663698279347px)}}
+
+/*Shake Animation 6*/
+@keyframes snowflakes-shake6{0%,100%{transform:translateX(0)}50%{transform:translateX(88.52656803200745px)}}
+@-webkit-keyframes snowflakes-shake6{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(88.52656803200745px);transform:translateX(88.52656803200745px)}}
+
+/*Shake Animation 7*/
+@keyframes snowflakes-shake7{0%,100%{transform:translateX(0)}50%{transform:translateX(86.99360832090866px)}}
+@-webkit-keyframes snowflakes-shake7{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(86.99360832090866px);transform:translateX(86.99360832090866px)}}
+
+/*Shake Animation 8*/
+@keyframes snowflakes-shake8{0%,100%{transform:translateX(0)}50%{transform:translateX(95.10112514647457px)}}
+@-webkit-keyframes snowflakes-shake8{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(95.10112514647457px);transform:translateX(95.10112514647457px)}}
+
+/*Shake Animation 9*/
+@keyframes snowflakes-shake9{0%,100%{transform:translateX(0)}50%{transform:translateX(119.9179825767545px)}}
+@-webkit-keyframes snowflakes-shake9{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(119.9179825767545px);transform:translateX(119.9179825767545px)}}
+
+/*Shake Animation 10*/
+@keyframes snowflakes-shake10{0%,100%{transform:translateX(0)}50%{transform:translateX(112.91001463801729px)}}
+@-webkit-keyframes snowflakes-shake10{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(112.91001463801729px);transform:translateX(112.91001463801729px)}}
+
+@keyframes snowflakes-rotate {
+    0%,
+    25%{
+        transform: rotate(90deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(270deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes snowflakes-rotate-reverse {
+    0%,
+    25%{
+        transform: rotate(-90deg);
+    }
+    50%{
+        transform: rotate(-180deg);
+    }
+    75%{
+        transform: rotate(-270deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+.Snowflakes-js-snowflake{
+    position:fixed;
+    top:-10%;
+	z-index:9999;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	cursor:default;
+	-webkit-animation-iteration-count:infinite,infinite;
+	-webkit-animation-play-state:running,running;
+	animation-iteration-count:infinite,infinite;
+	animation-play-state:running,running
+}
+.Snowflakes-js-snowflake-rotate{
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
+}

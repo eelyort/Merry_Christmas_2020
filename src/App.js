@@ -9,6 +9,7 @@ const welcome = 0;
 const transitionA = 1;
 //  zoom
 const transitionB = 2;
+const difficultySelect = 7;
 const countdown = 3;
 const playing = 4;
 const gameEnded = 5;
@@ -41,7 +42,8 @@ const puckStartSpeed = -14;
 const puckMinSpeed = 14;
 // vertical
 const paddleSpeed = 17;
-const aiPaddleSpeed = 12;
+let aiPaddleSpeed = 12;
+const difficultyAISpeed = [6, 8, 12, 16];
 // controls the physics of ball bouncing off the paddle
 const vertSpeedConservation = .4;
 // desmos: Kaguya Pong
@@ -64,6 +66,7 @@ class App extends React.Component {
         this.state = {
             state: welcome,
             countdownVal: -1,
+            difficultySelected: 1,
         };
 
         // for handlers
@@ -82,29 +85,69 @@ class App extends React.Component {
     }
 
     // event handlers
-    // setup
-    componentDidMount() {
-        window.addEventListener("keypress", (e) => this.keyPressHandler(e));
-        window.addEventListener("keydown", (e) => this.keyDownHandler(e));
-        window.addEventListener("keyup", (e) => this.keyUpHandler(e));
-    }
-    // teardown
-    componentWillUnmount() {
-        window.removeEventListener("keypress", (e) => this.keyPressHandler(e));
-        window.removeEventListener("keydown", (e) => this.keyDownHandler(e));
-        window.removeEventListener("keyup", (e) => this.keyUpHandler(e));
-    }
     // handler functions
+    pressAnyToContinue() {
+        this.setState(() => ({state: transitionA}));
+        setTimeout(() => {
+            this.setState(() => ({state: transitionB}));
+            setTimeout(() => this.setState(() => ({state: difficultySelect})), 1200);
+        }, 1200);
+    }
+    playAgain() {
+        this.setState(() => ({state: difficultySelect}));
+    }
+    selectDifficulty(val) {
+        if(val === undefined || val < 0 || val > difficultyAISpeed.length) {
+            console.log(`SELECTDIFFICULTY ERROR`);
+        }
+        else {
+            aiPaddleSpeed = difficultyAISpeed[val];
+            this.setState(() => ({difficultySelected: val}));
+            setTimeout(() => this.setState(() => ({state: countdown, countdownVal: -1})), 50);
+        }
+    }
     keyPressHandler(e) {
+        const {state, difficultySelected} = this.state;
+
+        // console.log(`keyPress: ${e.key}`);
+
+        // press any key to continue...
+        if(state === welcome) {
+            this.pressAnyToContinue();
+        }
+        // difficulty select
+        if(state === difficultySelect) {
+            if(e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+                if(difficultySelected > 0) {
+                    this.setState((old) => ({difficultySelected: old.difficultySelected-1}));
+                }
+            }
+            if(e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
+                if(difficultySelected < difficultyAISpeed.length-1) {
+                    this.setState((old) => ({difficultySelected: old.difficultySelected+1}));
+                }
+            }
+            if(e.key === 'Enter') {
+                this.selectDifficulty(difficultySelected);
+            }
+        }
+        // play again?
+        if(state === credits) {
+            this.playAgain();
+        }
+    }
+    clickHandler(e) {
         const {state} = this.state;
+
+        console.log(`click: ${e}`);
 
         // press any key to continue...
         if(state === welcome){
-            this.setState(() => ({state: transitionA}));
-            setTimeout(() => {
-                this.setState(() => ({state: transitionB}));
-                setTimeout(() => this.setState(() => ({state: countdown, countdownVal: -1})), 1200);
-            }, 1200);
+            this.pressAnyToContinue();
+        }
+        // play again?
+        if(state === credits){
+            this.playAgain();
         }
     }
     keyDownHandler(e) {
@@ -116,12 +159,14 @@ class App extends React.Component {
 
     // render
     render() {
-        const {state, countdownVal} = this.state;
+        const {state, countdownVal, difficultySelected} = this.state;
 
         if(state === welcome) {
             return (
-                <div className={'app'}>
-                    <RectFill padding={10} ratio={1.77777777778} className={"slow-transition"}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
+                    <RectFill padding={25} ratio={1.77777777778} className={"slow-transition"}>
                         <div className={"bg-2 fill"} />
                         <div className={"right-eye fill"} />
                         <div className={"left-eye fill"} />
@@ -135,7 +180,9 @@ class App extends React.Component {
 
         else if(state === transitionA) {
             return (
-                <div className={'app'}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
                     <RectFill padding={10} ratio={1} className={"slow-transition"}>
                         <div className={"bg-2 fill fill-transition"} />
                         <div className={"right-eye fill fill-transition"} />
@@ -147,11 +194,50 @@ class App extends React.Component {
 
         else if(state === transitionB) {
             return(
-                <div className={'app'}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
                     <RectFill padding={10} ratio={1} className={"hide-overflow"}>
                         <div className={"bg-2 fill fill2 fill-transition"} />
                         <div className={"right-eye fill fill2 fill-transition"} />
                         <div className={"left-eye fill fill2 fill-transition"} />
+                    </RectFill>
+                </div>
+            );
+        }
+
+        else if(state === difficultySelect) {
+            return(
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
+                    <RectFill padding={10} ratio={1} className={"hide-overflow"}>
+                        <div className={"bg-2 fill fill2 fill-transition"} />
+                        <div className={"right-eye fill fill2 fill-transition"} />
+                        <div className={"left-eye fill fill2 fill-transition"} />
+                        <div className={"text textGame"}>
+                            ENEMY IQ:
+                            <br /><br />
+                            <span onClick={() => this.selectDifficulty(0)}
+                                  className={'diff-selector' + ((difficultySelected === 0) ? (' selected') : (''))}>
+                                CHIKA
+                            </span>
+                            <br /><br />
+                            <span onClick={() => this.selectDifficulty(1)}
+                                  className={'diff-selector' + ((difficultySelected === 1) ? (' selected') : (''))}>
+                                KAGUYA
+                            </span>
+                            <br /><br />
+                            <span onClick={() => this.selectDifficulty(2)}
+                                  className={'diff-selector' + ((difficultySelected === 2) ? (' selected') : (''))}>
+                                HAYASAKA
+                            </span>
+                            <br /><br />
+                            <span onClick={() => this.selectDifficulty(3)}
+                                  className={'diff-selector' + ((difficultySelected === 3) ? (' selected') : (''))}>
+                                ISHIGAMI
+                            </span>
+                        </div>
                     </RectFill>
                 </div>
             );
@@ -163,28 +249,26 @@ class App extends React.Component {
                 this.setState(() => ({countdownVal: 4}));
 
                 setTimeout(() => {
-                    this.setState(() => ({state: playing}));
+                    this.setState(() => ({countdownVal: 3}));
+                    setTimeout(() => {
+                        this.setState(() => ({countdownVal: 2}));
+                        setTimeout(() => {
+                            this.setState(() => ({countdownVal: 1}));
+                            setTimeout(() => {
+                                this.setState(() => ({countdownVal: 0}));
+                                setTimeout(() => {
+                                    this.setState(() => ({state: playing}));
+                                }, 1000);
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
                 }, 1000);
-
-                // setTimeout(() => {
-                //     this.setState(() => ({countdownVal: 3}));
-                //     setTimeout(() => {
-                //         this.setState(() => ({countdownVal: 2}));
-                //         setTimeout(() => {
-                //             this.setState(() => ({countdownVal: 1}));
-                //             setTimeout(() => {
-                //                 this.setState(() => ({countdownVal: 0}));
-                //                 setTimeout(() => {
-                //                     this.setState(() => ({state: playing}));
-                //                 }, 1000);
-                //             }, 1000);
-                //         }, 1000);
-                //     }, 1000);
-                // }, 1000);
             }
 
             return(
-                <div className={'app'}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
                     <RectFill padding={10} ratio={1} className={"hide-overflow"}>
                         <div className={"bg-2 fill fill2"} />
                         {this.makeBorders()}
@@ -203,11 +287,14 @@ class App extends React.Component {
             // start playing
             if(this.tickInterval === null){
                 this.resetGameVars();
+                console.log(`game starting, ai speed: ${aiPaddleSpeed}`);
                 this.tickInterval = setInterval(() => this.tick(), 1000/ticksPS);
             }
 
             return(
-                <div className={'app'}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
                     <RectFill padding={10} ratio={1} className={"hide-overflow"}>
                         <div className={"bg-2 fill fill2"} />
                         {this.makeBorders()}
@@ -229,14 +316,16 @@ class App extends React.Component {
             );
         }
 
-        else if(state === gameEnded){
+        else if(state === gameEnded) {
             if(this.tickInterval) {
                 clearInterval(this.tickInterval);
                 this.tickInterval = null;
             }
 
             return(
-                <div className={'app'}>
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
                     <RectFill padding={10} ratio={1} className={"hide-overflow"}>
                         <div className={"bg-2 fill fill2"} />
                         {this.makeBorders()}
@@ -261,6 +350,37 @@ class App extends React.Component {
             );
         }
 
+        else if(state === credits) {
+            return(
+                <div className={'app'} id={'app'} onKeyPress={(e) => this.keyPressHandler(e)}
+                     onKeyDown={(e) => this.keyDownHandler(e)} onKeyUp={(e) => this.keyUpHandler(e)}
+                     onClick={(e) => this.clickHandler(e)} tabIndex={-1}>
+                    <RectFill padding={10} ratio={1} className={"hide-overflow"}>
+                        <div className={"bg-2 fill fill2"} />
+                        {this.makeBorders()}
+                        <div className={"text textGame textScore"}>
+                            {`${this.scoreLeft}`}<span />-<span />{`${this.scoreRight}`}
+                        </div>
+                        <div className={"left-eye fill fill2"} style={({
+                            top: `${(this.paddle1Pos-leftEyeStartOffset)*gameToPercent}%`,
+                        })} />
+                        <div className={"right-eye fill fill2"} style={({
+                            top: `${(this.paddle2Pos-rightEyeStartOffset)*gameToPercent}%`,
+                        })} />
+                        <div className={"puck fill fill2"} style={({
+                            left: `${this.xPuck*gameToPercent}%`,
+                            top: `${this.yPuck*gameToPercent}%`,
+                        })} />
+                        <div className={"text textGame"}>
+                            {`P${((this.scoreLeft > this.scoreRight) ? (1) : (2))} WINS!`}
+                            <br /><br />
+                            PLAY AGAIN?
+                        </div>
+                    </RectFill>
+                </div>
+            );
+        }
+
         // TODO: onwards
 
         console.log(`UNKNOWN STATE IN APP: ${state}`);
@@ -274,11 +394,12 @@ class App extends React.Component {
             if(this.scoreLeft >= winScore || this.scoreRight >= winScore) {
                 clearInterval(this.tickInterval);
                 this.setState(() => ({state: gameEnded}));
+                setTimeout(() => this.setState(() => ({state: credits})), 2000);
                 return;
             }
 
-            this.xVelecityPuck = ((this.xPuck > 0) ? (puckStartSpeed/2 * -1) : (puckStartSpeed/2));
-            this.yVelecityPuck = Math.random()*puckMinSpeed*2-puckMinSpeed;
+            this.xVelecityPuck = ((this.xPuck > 0) ? (puckStartSpeed/3 * -1) : (puckStartSpeed/3));
+            this.yVelecityPuck = Math.random()*puckMinSpeed-puckMinSpeed/2;
             this.xPuck = 0;
             this.yPuck = 0;
         }
@@ -307,7 +428,7 @@ class App extends React.Component {
         let newY = this.yPuck + this.yVelecityPuck;
         //  worst edge case: ball moving diagonally into corner
         if((newY <= topBound || newY >= botBound) && Math.abs(newX) >= distToPaddlePlane-puckRadius){
-            console.log("corner case");
+            // console.log("corner case");
             const percentXToGo = Math.abs((Math.abs(this.xPuck - distToPaddlePlane)+puckRadius)/this.xVelecityPuck);
             const percentYToGo = ((newY <= topBound) ? (
                 Math.abs((Math.abs(this.yPuck-topBound)+puckRadius)/this.yVelecityPuck)

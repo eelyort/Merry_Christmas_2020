@@ -1,6 +1,10 @@
 .app {
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+}
+.app:focus {
+    outline: none;
 }
 
 .hide-overflow {
@@ -85,4 +89,40 @@
 }
 .textScore > span {
     padding: 0 2%;
+}
+
+.diff-selector {
+    font-size: 4rem;
+}
+.diff-selector:hover {
+    color: #e9e9e9;
+}
+.diff-selector:active {
+    color: #d9d9d9;
+}
+.diff-selector.selected {
+    text-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.8);
+}
+.diff-selector:nth-of-type(1).selected {
+    color: #EFD1D9;
+}
+.diff-selector:nth-of-type(2).selected {
+    color: #ED1B24;
+}
+.diff-selector:nth-of-type(3).selected {
+    color: #DBBA6B;
+}
+.diff-selector:nth-of-type(4).selected {
+    color: #556598;
+}
+
+#app > div > div {
+    border-color: #BB2528;
+    border-style: solid;
+    border-width: 6px;
+
+    margin: -6px;
+
+    box-shadow: #BB2528 0 0 30px;
+    border-radius: 5px;
 }
