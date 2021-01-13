@@ -1,7 +1,8 @@
 .app {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #165B33;
+    overflow: hidden;
 }
 .app:focus {
     outline: none;
@@ -28,30 +29,30 @@
 }
 
 .bg-1, .bg-2, .right-eye, .left-eye, .puck, .vert-bound, .horz-bound {
-    background-image: url("./img/bg-1.png");
+    background-image: url("../../img/bg-1.png");
     background-size: cover;
     background-position: right;
 }
 .bg-2 {
-    background-image: url("./img/bg-2.png");
+    background-image: url("../../img/bg-2.png");
 }
 .right-eye {
-    background-image: url("./img/right-eye.png");
+    background-image: url("../../img/right-eye.png");
 }
 .left-eye {
-    background-image: url("./img/left-eye.png");
+    background-image: url("../../img/left-eye.png");
 }
 .puck {
-    background-image: url("./img/puck.png");
+    background-image: url("../../img/puck.png");
 }
 .vert-bound, .horz-bound {
     opacity: 0.30;
 }
 .vert-bound {
-    background-image: url("./img/vert-bound.png");
+    background-image: url("../../img/vert-bound.png");
 }
 .horz-bound {
-    background-image: url("./img/horz-bound.png");
+    background-image: url("../../img/horz-bound.png");
 }
 
 .slow-transition {
@@ -60,7 +61,7 @@
 
 @font-face {
     font-family: pressStart2P;
-    src: url("./assets/Press_Start_2P/PressStart2P-Regular.ttf");
+    src: url("../../assets/Press_Start_2P/PressStart2P-Regular.ttf");
 }
 .text {
     position: absolute;

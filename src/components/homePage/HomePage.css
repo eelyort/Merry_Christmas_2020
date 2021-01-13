@@ -1,0 +1,80 @@
+.background {
+    background-color: #165B33;
+    overflow: hidden;
+}
+
+.static-text{
+    width: 60%;
+    margin: 0 auto;
+    padding: 2rem 0 4rem 0;
+
+    text-align: center;
+
+    color: white;
+    font-size: 1.4em;
+}
+.static-text.main {
+    padding-top: 4rem;
+}
+.static-text span.title{
+    font-size: 2.1em;
+    font-weight: bold;
+
+    /*border-image: url("../Images/custom-underline-760x60.png") 60 stretch;*/
+    /*border-bottom: 8px solid;*/
+
+    /*padding: 0 6px 1.6% 6px;*/
+    padding-bottom: 0.65em;
+    background-image: url("../../img/custom-underline.png");
+    background-repeat: no-repeat;
+    background-position: 0 1.3em;
+    background-size: 100% auto;
+}
+.static-text span.title.small{
+    font-size: 1.1em;
+}
+.static-text.main span.title{
+    font-size: 3.2em;
+    background-position: 50% 1.2em;
+    background-size: 95% auto;
+    font-weight: 600;
+}
+.static-text p{
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    white-space: initial;
+}
+.static-text p:first-of-type{
+    margin-top: 1.8em;
+}
+.static-text.main p:first-of-type{
+    margin-top: 2.6em;
+}
+.static-text a{
+    color: white;
+}
+.static-text a:hover{
+    color: #f9f9f9;
+}
+.static-text a:active{
+    color: #d9d9d9;
+}
+.static-text a:visited{
+    color: #b9b9b9;
+}
+
+.no-wrap{
+    margin: 0 -200vw;
+    width: 500vw;
+    text-wrap: avoid;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.portrait{
+    margin: 1rem;
+}
+
+.vspace{
+    padding: 20rem 0;
+}

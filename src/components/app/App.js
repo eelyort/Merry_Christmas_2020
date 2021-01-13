@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RectFill from "./components/RectFill/RectFill";
+import RectFill from "../RectFill/RectFill";
 import './App.css';
 
 // states
